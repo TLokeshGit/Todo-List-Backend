@@ -18,8 +18,8 @@ This is the backend part of the Todo App, built with Express.js and Prisma.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/todo-app.git
-   cd todo-app/backend
+   git clone https://github.com/yourusername/Todo-List-Backend.git
+   cd Todo-List-Backend
    ```
 
 2. **Install dependencies:**
@@ -31,23 +31,30 @@ This is the backend part of the Todo App, built with Express.js and Prisma.
 3. **Set up the database:**
 
    - Create a MySQL database
-   - Create a `.env` file with the following content:
+   - Create a `.env` file with the following content (replace user and password):
      ```
      DATABASE_URL="mysql://user:password@localhost:3306/todo_app"
-     PORT = 5001
+     PORT=5001
+     ```
+
+4. **Initialize the database using Prisma:**
+
+   - Generate Prisma client:
+     ```bash
+     npx prisma generate
      ```
    - Run Prisma migrations:
      ```bash
      npx prisma migrate dev --name init
      ```
 
-4. **Start the server:**
+5. **Start the server:**
 
    ```bash
    npm run dev
    ```
 
-5. **The server will be running on:**
+6. **The server will be running on:**
 
    ```
    http://localhost:5001
@@ -71,7 +78,3 @@ This is the backend part of the Todo App, built with Express.js and Prisma.
 - `npm run dev`: Runs the development server
 - `npm run build`: Builds the application for production
 - `npm start`: Runs the built application
-
-## License
-
-This project is licensed under the MIT License.
