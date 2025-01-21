@@ -1,4 +1,3 @@
-// filepath: /Users/lokesh/Desktop/Todo_App/todo-api/prisma/schema.prisma
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -8,6 +7,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Define the Task model
 model Task {
   id        Int      @id @default(autoincrement())
   title     String

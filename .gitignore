@@ -1,5 +1,33 @@
-node_modules
+# Node modules
+node_modules/
 /node_modules
-build
+
+# Build output
+build/
+
 # Keep environment variables out of version control
 .env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+
+# Testing
+coverage/
+
+# Miscellaneous
+.DS_Store
+*.pem
+
+# Local history (VSCode extension)
+.vscode-local-history/
+
+# Prisma migrations
+# Do not ignore migrations
+# prisma/migrations/

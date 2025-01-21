@@ -13,12 +13,59 @@ This is the backend part of the Todo App, built with Express.js and Prisma.
 - npm
 - MySQL
 
+## Database Setup
+
+Before running Prisma migrations, ensure that you have a MySQL database set up. Follow the steps below to create and configure your database.
+
+### 1. Install MySQL
+
+If you haven't installed MySQL yet, you can install it using Homebrew on macOS:
+
+```bash
+brew install mysql
+brew services start mysql
+```
+
+### 2. Secure MySQL Installation
+
+Run the secure installation script to set up your root password and secure your MySQL server:
+
+```bash
+mysql_secure_installation
+```
+
+Follow the prompts to set a strong root password and configure security settings.
+
+### 3. Create the Database
+
+Log into the MySQL shell and create the `todoapp` database:
+
+```bash
+mysql -u root -p
+```
+
+Enter your root password when prompted.
+
+```sql
+CREATE DATABASE todoapp;
+EXIT;
+```
+
+### 4. Configure Environment Variables
+
+Ensure your `.env` file has the correct `DATABASE_URL` with URL-encoded special characters:
+
+```plaintext
+DATABASE_URL="mysql://root:your_password3@localhost:3306/todoapp"
+PORT=5001
+```
+
 ## Getting Started
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/Todo-List-Backend.git
+   git clone https://github.com/TLokeshGit/Todo-List-Backend.git
    cd Todo-List-Backend
    ```
 
@@ -28,37 +75,51 @@ This is the backend part of the Todo App, built with Express.js and Prisma.
    npm install
    ```
 
-3. **Set up the database:**
+3. **Run Prisma Migrations:**
 
-   - Create a MySQL database
-   - Create a `.env` file with the following content (replace user and password):
-     ```
-     DATABASE_URL="mysql://user:password@localhost:3306/todo_app"
-     PORT=5001
-     ```
+   After setting up the database, run the following commands to generate and apply Prisma migrations:
 
-4. **Initialize the database using Prisma:**
+   ```bash
+   npx prisma generate
+   npx prisma migrate dev --name init
+   ```
 
-   - Generate Prisma client:
-     ```bash
-     npx prisma generate
-     ```
-   - Run Prisma migrations:
-     ```bash
-     npx prisma migrate dev --name init
-     ```
-
-5. **Start the server:**
+4. **Start the server:**
 
    ```bash
    npm run dev
    ```
 
-6. **The server will be running on:**
+5. **The server will be running on:**
 
    ```
    http://localhost:5001
    ```
+
+## Verify the Setup
+
+1. **Check the Database:**
+
+   Log into MySQL and verify that the `Task` table has been created:
+
+   ```bash
+   mysql -u root -p
+   ```
+
+   ```sql
+   USE todoapp;
+   SHOW TABLES;
+   DESCRIBE Task;
+   EXIT;
+   ```
+
+2. **Start the Backend Server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   The server should be running on `http://localhost:5001`.
 
 ## API Endpoints
 
